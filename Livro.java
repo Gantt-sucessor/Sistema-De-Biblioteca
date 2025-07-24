@@ -45,20 +45,16 @@ public class Livro{
         
     }
 
-    public boolean reduzirEstoque(){
+    public boolean reduzirEstoque(int quantidade){
 
-        if (estoque > 0){
-
-            estoque--;
+       if(estoque >= quantidade){
+            estoque -= quantidade;
             return true;
-
-        }else{
-
+       }else{
             return false;
-
-        }
+       }
+       
     }
-
     
     public String mostrarLivro(){
         return "Nome: "+nome+" \ncategoria: "+categoria+" \nnumero de páginas: "+numPagina+" \nestoque: "+estoque+" \nisbn: "+isbn;

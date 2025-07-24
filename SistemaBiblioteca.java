@@ -17,8 +17,27 @@ public class SistemaBiblioteca {
 
     public static void listarLivros() {
         for (Livro l : livros) {
-            System.out.println("Livros cadastrados:");
+   
             System.out.println(l.mostrarLivro());
         }
+    }
+
+    public static boolean comprarLivros(String nomeLivro, int quantidade){
+        for (Livro l: livros){
+
+            if(l.getNome().equalsIgnoreCase(nomeLivro)){
+                if(l.reduzirEstoque(quantidade)){
+                    System.out.println("Compra realizado com sucesso!!");
+                    return true;
+                }else{
+                    System.out.println("Estoque insuficiente. Temos apenas: "+l.getEstoque()+" unidades");
+                    return false;
+                }
+
+            }
+        }
+
+        System.out.println("Livro não encontrado");
+        return false;
     }
 }
