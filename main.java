@@ -37,7 +37,8 @@ public class main {
                             System.out.println("\nBem-vindo ADM " + nomePessoa);
                             System.out.println("1 - Cadastrar livro");
                             System.out.println("2 - Visualizar livros cadastrados");
-                            System.out.println("3 - Sair");
+                            System.out.println("3 - Apagar livro");
+                            System.out.println("4 - Sair");
 
                             System.out.print("Escolha a opção: ");
                             int opcoesAdm = input.nextInt();
@@ -73,6 +74,11 @@ public class main {
                                     break;
 
                                 case 3:
+                                    
+                                    
+                                    break; 
+
+                                case 4:
                                     System.out.println("Saindo da conta do ADM...");
                                     break; 
                             }

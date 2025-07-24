@@ -1,3 +1,4 @@
+import java.awt.im.InputContext;
 import java.util.ArrayList;
 
 public class SistemaBiblioteca {
@@ -39,5 +40,12 @@ public class SistemaBiblioteca {
 
         System.out.println("Livro não encontrado");
         return false;
+    }
+
+    public static boolean excluirLivro(int nomeLivro){
+
+        
+
+
     }
 }
