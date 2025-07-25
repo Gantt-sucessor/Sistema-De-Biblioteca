@@ -1,5 +1,5 @@
-import java.awt.im.InputContext;
 import java.util.ArrayList;
+import java.util.Iterator;
 
 public class SistemaBiblioteca {
     
@@ -42,10 +42,18 @@ public class SistemaBiblioteca {
         return false;
     }
 
-    public static boolean excluirLivro(int nomeLivro){
+    public static boolean excluirLivro(String nomeLivro){
 
-        
+        Iterator<Livro> iterator = livros.iterator();
 
+        while(iterator.hasNext()){
+            Livro livro = iterator.next();
+            if(livro.getNome().equalsIgnoreCase(nomeLivro)){
+                iterator.remove();
+                return true;
+            }
+        }
+        return false;
 
     }
 }

@@ -6,91 +6,55 @@ public class main {
 
         Scanner input = new Scanner(System.in);
 
-        while (true) {
-            System.out.println("\nBem-vindo ao sistema de biblioteca");
-            System.out.println("1 - ADM");
-            System.out.println("2 - Usuário");
-            System.out.println("3 - Sair");
+        MenuPrincipal menuPrincipal = new MenuPrincipal();
+        MenuAdm menuAdm = new MenuAdm();
 
-            System.out.print("Por qual login você irá acessar: ");
-            int opcoes = input.nextInt();
-            input.nextLine(); 
+        while (true) { 
+            
+            int opcoesMenuGeral = menuPrincipal.exibirMenuPrincipal(input);
 
-            System.out.println("------------------");
+            switch (opcoesMenuGeral) {
+                case 1:         
 
-            switch (opcoes) {
-                case 1:
-                    System.out.print("Nome: ");
-                    String nomePessoa = input.next();
+                    while (true) {
+                        
+                        int opcoesMenuAdm = menuAdm.exibirMenuAdm(input);
+            
+                        switch (opcoesMenuAdm ) {
+                            case 1:
+                                
+                                ExecutarMenuAdm executarMenuAdm = new ExecutarMenuAdm();
 
-                    System.out.print("Email: ");
-                    String emailPessoa = input.next();
-
-                    System.out.print("Senha: ");
-                    String senhaPessoa = input.next();
-
-                    if (nomePessoa.equals("Luciano") &&
-                        emailPessoa.equals("bolhadeplastico@outlook.com") &&
-                        senhaPessoa.equals("123")) {
-
-                        while (true) {
-                            System.out.println("\nBem-vindo ADM " + nomePessoa);
-                            System.out.println("1 - Cadastrar livro");
-                            System.out.println("2 - Visualizar livros cadastrados");
-                            System.out.println("3 - Apagar livro");
-                            System.out.println("4 - Sair");
-
-                            System.out.print("Escolha a opção: ");
-                            int opcoesAdm = input.nextInt();
-                            input.nextLine(); 
-                            
-                            switch (opcoesAdm) {
-                                case 1:
-                                    System.out.println("\nCadastro de Livro:");
-
-                                    System.out.print("Nome: ");
-                                    String nomeLivro = input.nextLine();
-
-                                    System.out.print("Categoria: ");
-                                    String categoriaLivro = input.nextLine();
-
-                                    System.out.print("Número de Páginas: ");
-                                    int numeroPaginas = input.nextInt();
-
-                                    System.out.print("Estoque: ");
-                                    int estoqueLivro = input.nextInt();
-
-                                    System.out.print("ISBN: ");
-                                    int isbnLivro = input.nextInt();
-                                    input.nextLine(); 
-
-                                    Livro novoLivro = new Livro(nomeLivro, numeroPaginas, estoqueLivro, categoriaLivro, isbnLivro);
-                                    SistemaBiblioteca.adicionarLivro(novoLivro);
-                                    break;
-
-                                case 2:
-                                    System.out.println("Livros cadastrados:");
-                                    SistemaBiblioteca.listarLivros();
-                                    break;
-
-                                case 3:
-                                    
-                                    
-                                    break; 
-
-                                case 4:
-                                    System.out.println("Saindo da conta do ADM...");
-                                    break; 
-                            }
-
-                            if (opcoesAdm == 3){
                                 break;
-                            }
+
+                            case 2:
+                            
+                                System.out.println("Livros cadastrados:");
+                                SistemaBiblioteca.listarLivros();
+                                break;
+
+                            case 3:
+                                    
+                                System.out.println("Digite o nome do livro que você deseja escluir: ");
+                                String nomeExcluir = input.next();
+
+                                if (SistemaBiblioteca.excluirLivro(nomeExcluir)) {
+                                    System.out.println("Livro removido com sucesso!");
+                                }else{
+                                    System.out.println("Livro não encontrado!");
+                                }
+
+                                break; 
+
+                            case 4:
+                                System.out.println("Saindo da conta do ADM...");
+                                break; 
                         }
-                    } else {
-                        System.out.println("Login inválido. Tente novamente.");
-                    }
-                    break;
+
+                        if (opcoesMenuAdm == 3){
+                            break;
+                        }
+                    }            
 
                 case 2:
                     System.out.print("Nome: ");
@@ -150,7 +114,10 @@ public class main {
 
                 default:
                     System.out.println("Opção inválida.");
-            }
+                    
+            } 
+    
         }
     }
 }
+
